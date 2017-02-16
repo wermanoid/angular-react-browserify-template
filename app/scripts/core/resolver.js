@@ -55,7 +55,6 @@ class AngularDependencyResolver {
             this.modules.push(moduleName);
         }
         module[dependency](dependencyName, factory());
-        angular.module(name, this.modules);
     }
 }
 

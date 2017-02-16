@@ -1,6 +1,14 @@
-export default ($routeProvider) => {
+export default ($stateProvider, $urlRouterProvider, $locationProvider) => {
     'ngInject';
-    $routeProvider
-        .when('/main', {templateUrl: 'main.html', controller: 'mainController', controllerAs: 'vm'})
-        .otherwise('/main');
+    $locationProvider.html5Mode(false);
+    $locationProvider.hashPrefix('');
+
+    const mainState = {
+        name: 'home',
+        url: '/home',
+        component: 'home'
+    };
+
+    $stateProvider.state(mainState);
+    $urlRouterProvider.otherwise('/home');
 };

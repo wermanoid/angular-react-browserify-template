@@ -1,9 +1,9 @@
 import App from 'core/app';
-import 'angular-route';
+import 'angular-ui-router';
 
 @App('main')
 export class MainApp {
     constructor() {
-        this.vendors = ['ngRoute', 'main.templates'];
+        this.vendors = ['ui.router', 'main.templates'];
     }
 }

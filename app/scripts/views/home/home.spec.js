@@ -5,7 +5,7 @@ export class MainControllerTests {
     @SetUp
     setup($controller) {
         'ngInject';
-        this.ctrl = $controller('mainController');
+        this.ctrl = $controller('homeController');
     }
 
     @Test
