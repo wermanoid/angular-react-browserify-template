@@ -6,16 +6,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-      "gulp",
-      "browserify",
-      "angular",
-      "sass",
-      "karma",
-      "jasmine",
-      "protractor",
-      "babel",
-      "es6",
-      "react"
+    "gulp",
+    "browserify",
+    "angular",
+    "sass",
+    "karma",
+    "jasmine",
+    "protractor",
+    "babel",
+    "es6",
+    "react"
   ],
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "babel-preset-react": "^6.22.0",
     "babel-register": "^6.22.0",
     "babelify": "^7.3.0",
+    "bootstrap-sass": "^3.3.7",
     "brfs": "^1.4.3",
     "browser-sync": "^2.18.7",
     "browserify": "^14.0.0",
