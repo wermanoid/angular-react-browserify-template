@@ -1,0 +1,5 @@
+app/compiled
+app/scripts/templates.js
+node_modules/
+coverage/
+dist/
