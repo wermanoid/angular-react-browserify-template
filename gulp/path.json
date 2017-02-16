@@ -1,0 +1,13 @@
+{
+    "app": {
+        "root": "app",
+        "js": "app/scripts",
+        "dev": "app/compiled",
+        "sass": "app/sass",
+        "fonts": "app/fonts",
+        "build": "dist",
+        "img": "app/images",
+        "vendor": "app/vendors",
+        "e2e": "app/e2e"
+    }
+}
