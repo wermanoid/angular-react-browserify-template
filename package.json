@@ -33,7 +33,6 @@
     "babel-preset-react": "^6.22.0",
     "babel-register": "^6.22.0",
     "babelify": "^7.3.0",
-    "bootstrap-sass": "^3.3.7",
     "brfs": "^1.4.3",
     "browser-sync": "^2.18.7",
     "browserify": "^14.0.0",
@@ -92,7 +91,9 @@
     "angular-route": "^1.6.1",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^1.0.0-rc.1",
+    "bootstrap-sass": "^3.3.7",
     "bulk-require": "^1.0.0",
+    "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"

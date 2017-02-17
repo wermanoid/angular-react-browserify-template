@@ -9,27 +9,28 @@ import {app}                from './path';
 import { BrowserSyncInst }  from './browsersync';
 
 const bootstrapPath = 'node_modules/bootstrap-sass/assets/stylesheets';
+const faPath = 'node_modules/font-awesome/scss';
 
 function HandleError(err) {
     gutil.log(gutil.colors.red('Sass compile error:'), err.message, '\n\t');
     this.emit('end');
 }
 
-function SassPreCompile() {
+function SassCompile() {
+    const name = args.build ? `.${Date.now()}` : '';
     return this.src([
         `${bootstrapPath}/**/*.scss`,
         `!${bootstrapPath}/_bootstrap-compass.scss`,
         `!${bootstrapPath}/_bootstrap-mincer.scss`,
-        `!${bootstrapPath}/_bootstrap-sprockets.scss`
+        `!${bootstrapPath}/_bootstrap-sprockets.scss`,
+        `${faPath}/**/*.scss`,
+        `${app.sass}/main.scss`
     ])
-    .pipe(this.dest(app.sass));
-}
-
-function SassCompile() {
-    const name = args.build ? `.${Date.now()}` : '';
-    return this.src(app.sass + '/main.scss')
         .pipe(gif(!args.build, sourcemaps.init({loadMaps: true})))
-        .pipe(sass())
+        .pipe(sass({includePaths: [
+            bootstrapPath,
+            faPath
+        ]}))
         .on('error', HandleError)
         .pipe(rename(`main${name}.css`))
         .pipe(gif(args.build, cleanCSS()))
@@ -38,4 +39,4 @@ function SassCompile() {
         .pipe(BrowserSyncInst.stream({once: true}));
 }
 
-export { SassCompile, SassPreCompile };
+export { SassCompile };

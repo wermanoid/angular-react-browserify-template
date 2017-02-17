@@ -7,9 +7,9 @@ const {
     vendor: { VendorCompile },
     protractor: { E2ETests },
     inject: { IndexCompile },
-    styles: { SassCompile, SassPreCompile },
+    styles: { SassCompile },
     images: { ImgCompile },
-    fonts: { FontCompile, FontPreCompile },
+    fonts: { FontCompile },
     views: { HtmlCompile },
     watch: { RunWatchers },
     clean: { RunCleanup },
@@ -22,9 +22,7 @@ gulp.task('compile:img', gulp::ImgCompile);
 gulp.task('clean', gulp::RunCleanup);
 gulp.task('watch', gulp::RunWatchers);
 gulp.task('compile:font', gulp::FontCompile);
-gulp.task('precompile:font', gulp::FontPreCompile);
 gulp.task('compile:css', gulp::SassCompile);
-gulp.task('precompile:css', gulp::SassPreCompile);
 gulp.task('compile:html:views', gulp::HtmlCompile);
 gulp.task('compile:html:index', gulp::IndexCompile);
 gulp.task('compile:vendor', gulp::VendorCompile);
@@ -32,14 +30,6 @@ gulp.task('compile:js', gulp::CreateBundler);
 gulp.task('server', RunBrowserSync);
 gulp.task('karma', RunKarma);
 gulp.task('e2e', E2ETests);
-
-gulp.task('build:css', (callback) => {
-    const seq = new Sequence();
-    seq
-        .async('precompile:css', 'precompile:font')
-        .async('compile:font', 'compile:css')
-        .call(gulp, callback);
-});
 
 gulp.task('compile:all', (callback) => {
     const seq = new Sequence();
@@ -56,8 +46,7 @@ gulp.task('build', (callback) => {
         'compile:vendor',
         'compile:img'
     ];
-    seq.async('precompile:css', 'precompile:font')
-        .async(...args)
+    seq.async(...args)
         .sync('compile:all')
         .call(gulp, callback);
 });
