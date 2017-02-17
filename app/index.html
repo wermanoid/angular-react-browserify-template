@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Bookshelf</title>
-        <meta name="author" content="Alex">
-        <!-- inject:js -->
-        <!-- endinject -->
-        <!-- inject:css -->
-        <!-- endinject -->
-    </head>
-    <body>
-        <a ui-sref="home" ui-sref-active="active">Hello to main</a>
-        future content here
-        <ui-view></ui-view>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bookshelf</title>
+    <meta name="author" content="Alex">
+    <!-- inject:js -->
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+
+<body layout="column" ng-cloak>
+    <md-toolbar layout="row" class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false">
+            <md-icon class="fa fa-bars fa-2x"></md-icon>
+        </md-button>
+        <h1>Initial example</h1>
+    </md-toolbar>
+    <ui-view></ui-view>
+</body>
+
 </html>

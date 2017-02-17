@@ -8,7 +8,7 @@ import {Args as args}       from './args';
 import {app}                from './path';
 import { BrowserSyncInst }  from './browsersync';
 
-const bootstrapPath = 'node_modules/bootstrap-sass/assets/stylesheets';
+const materialPath = 'node_modules/angular-material';
 const faPath = 'node_modules/font-awesome/scss';
 
 function HandleError(err) {
@@ -19,16 +19,13 @@ function HandleError(err) {
 function SassCompile() {
     const name = args.build ? `.${Date.now()}` : '';
     return this.src([
-        `${bootstrapPath}/**/*.scss`,
-        `!${bootstrapPath}/_bootstrap-compass.scss`,
-        `!${bootstrapPath}/_bootstrap-mincer.scss`,
-        `!${bootstrapPath}/_bootstrap-sprockets.scss`,
+        `${materialPath}/**/*.scss`,
         `${faPath}/**/*.scss`,
         `${app.sass}/main.scss`
     ])
         .pipe(gif(!args.build, sourcemaps.init({loadMaps: true})))
         .pipe(sass({includePaths: [
-            bootstrapPath,
+            materialPath,
             faPath
         ]}))
         .on('error', HandleError)
