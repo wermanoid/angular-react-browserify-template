@@ -37,7 +37,7 @@ const options = {
 
 const createAndExecuteBundle = (gulp) => {
     const opts = _.assign({}, watchify.args, options);
-    var brsf = bundler || browserify(opts)
+    const brsf = bundler || browserify(opts)
         .transform(eslintify, {
             quiet: args.quiet,
             fix: args.fix,
@@ -84,4 +84,4 @@ function CreateBundler() {
     return createAndExecuteBundle(this);
 }
 
-export {CreateBundler, cache as BundlerCache, rebundle as Rebundle};
+export {CreateBundler, cache as BundlerCache, rebundle};

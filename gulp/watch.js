@@ -1,7 +1,10 @@
 import { app }           from './path';
 import { ExecuteInject } from './inject';
 import watch             from 'gulp-watch';
-import {BundlerCache, Rebundle}    from './browserify';
+import {
+    BundlerCache,
+    rebundle
+}                        from './browserify';
 import _                 from 'lodash';
 import gutil             from 'gulp-util';
 
@@ -20,7 +23,7 @@ function RunWatchers() {
                     delete BundlerCache[key];
                 }
             }
-            Rebundle();
+            rebundle();
         }
     });
 
