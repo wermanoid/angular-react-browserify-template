@@ -19,23 +19,25 @@ import {Log, Handlers}      from './util';
 import {BrowserSyncInst}    from './browsersync';
 
 let bundler = null;
+let cache = {};
+
 const isBuild = args.build;
 const options = {
-    entries: [app.js + '/app.main.js'],
+    entries: [`${app.js}/app.main.js`, ],
     debug: !isBuild,
-    cache: {},
+    cache,
     packageCache: {},
     extensions: [
         '.js', '.jsx'
     ],
     fullPath: !isBuild,
-    paths: ['./node_modules', app.js]
+    paths: ['node_modules', app.js]
 };
 
 const createAndExecuteBundle = (gulp) => {
     const opts = _.assign({}, watchify.args, options);
-
-    bundler = browserify(opts)
+    console.log('Create new bundler....');
+    var brsf = bundler || browserify(opts)
         .transform(eslintify, {
             quiet: args.quiet,
             fix: args.fix,
@@ -44,8 +46,8 @@ const createAndExecuteBundle = (gulp) => {
             }
         })
         .transform(babelify)
-        .transform(ngAnnotate)
         .transform(brfs)
+        .transform(ngAnnotate)
         .transform(bulkify)
         .transform(envify({ENV_CONFIG: args.env}));
 
@@ -68,8 +70,10 @@ const createAndExecuteBundle = (gulp) => {
     };
 
     if (!args.build) {
-        bundler = watchify(bundler);
+        bundler = bundler || watchify(brsf, {poll: 100});
         bundler.on('update', () => rebundle(gulp));
+    } else {
+        bundler = brsf;
     }
     bundler.on('log', Log.info);
 
@@ -80,4 +84,4 @@ function CreateBundler() {
     return createAndExecuteBundle(this);
 }
 
-export {CreateBundler};
+export {CreateBundler, cache as BundlerCache};
