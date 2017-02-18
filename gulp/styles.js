@@ -18,11 +18,7 @@ function HandleError(err) {
 
 function SassCompile() {
     const name = args.build ? `.${Date.now()}` : '';
-    return this.src([
-        `${materialPath}/**/*.scss`,
-        `${faPath}/**/*.scss`,
-        `${app.sass}/main.scss`
-    ])
+    return this.src(`${app.sass}/main.scss`)
         .pipe(gif(!args.build, sourcemaps.init({loadMaps: true})))
         .pipe(sass({includePaths: [
             materialPath,
