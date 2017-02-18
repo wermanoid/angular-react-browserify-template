@@ -1,8 +1,9 @@
 import { app }           from './path';
 import { ExecuteInject } from './inject';
 import watch             from 'gulp-watch';
-import {BundlerCache}    from './browserify';
+import {BundlerCache, Rebundle}    from './browserify';
 import _                 from 'lodash';
+import gutil             from 'gulp-util';
 
 function RunWatchers() {
     this.watch(`${app.root}/index.html`, ['compile:html:index']);
@@ -11,20 +12,20 @@ function RunWatchers() {
 
     watch(`${app.js}/**/*.html`, () => this.start('compile:html:views'));
 
-    watch([`${app.js}/**/*.js`, `${app.js}/**/*.jsx`], (stream, done) => {
-        if(stream.event === 'add' || stream.event === 'unlink') {
-            for(let key in BundlerCache){
-                if(stream.path == key || _.endsWith(key, `${app.js}/core/moduler.js`)){
-                    console.log('Remove key from cache:', key);
+    watch([`${app.js}/**/*.js`, `${app.js}/**/*.jsx`], (stream) => {
+        if (stream.event === 'add' || stream.event === 'unlink') {
+            for (const key in BundlerCache) {
+                if (stream.path === key || _.endsWith(key, `${app.js}/core/moduler.js`)) {
+                    gutil.log(`${gutil.colors.green('Remove key from cache: ' + key)}...`);
                     delete BundlerCache[key];
                 }
             }
-            this.start('compile:js');
+            Rebundle();
         }
     });
 
-    watch([`${app.dev}/**/*.js`, `${app.dev}/**/*.css`], (stream, done) => {
-        if(stream.event === 'add' || stream.event === 'unlink') {
+    watch([`${app.dev}/**/*.js`, `${app.dev}/**/*.css`], (stream) => {
+        if (stream.event === 'add' || stream.event === 'unlink') {
             this::ExecuteInject();
         }
     });

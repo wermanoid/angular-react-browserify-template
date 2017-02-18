@@ -19,11 +19,12 @@ import {Log, Handlers}      from './util';
 import {BrowserSyncInst}    from './browsersync';
 
 let bundler = null;
-let cache = {};
+let rebundle = null;
 
+const cache = {};
 const isBuild = args.build;
 const options = {
-    entries: [`${app.js}/app.main.js`, ],
+    entries: [`${app.js}/app.main.js`],
     debug: !isBuild,
     cache,
     packageCache: {},
@@ -50,7 +51,7 @@ const createAndExecuteBundle = (gulp) => {
         .transform(bulkify)
         .transform(envify({ENV_CONFIG: args.env}));
 
-    const rebundle = () => {
+    rebundle = () => {
         Log.start();
         const stamp = isBuild ? `.${Date.now()}` : '';
         return bundler
@@ -83,4 +84,4 @@ function CreateBundler() {
     return createAndExecuteBundle(this);
 }
 
-export {CreateBundler, cache as BundlerCache};
+export {CreateBundler, cache as BundlerCache, rebundle as Rebundle};
