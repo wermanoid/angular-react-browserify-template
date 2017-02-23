@@ -5,8 +5,9 @@ This is core part of project, that contains build-system and simple example of A
 Application and build based on:
 * [AngularJS](http://angularjs.org/)
 * [SASS](http://sass-lang.com/)
-* [Bootstrap 3 Styles](http://getbootstrap.com/css/)
+* [Angular Material](https://material.angularjs.org)
 * [Font Awesome](http://fontawesome.io/icons/)
+* [Color Me Sass](http://richbray.me/cms/)
 * [Gulp](http://gulpjs.com/)
 * [Babel](https://babeljs.io/)
 * [Browserify](http://browserify.org/)
@@ -45,10 +46,7 @@ Current required structure:
 ┃ ┣━ fonts                //Bootstrap and FontAwesome fonts
 ┃ ┣━ vendors              //optional directory. all non imported scripts and styles should be here
 ┃ ┣━┳━ sass               //application styles (SASS)
-┃ ┃ ┣━ Bootstrap          //bootstrap styles
-┃ ┃ ┣━ fa                 //fontawesome styles
 ┃ ┃ ┣━ partials           //directory for your .scss files
-┃ ┃ ┣━ _bootstrap.scss    //global import of all bootstrap items
 ┃ ┃ ┗━ main.scss          //entry point for styles build. Here should be all import of your and any other styles
 ┃ ┗━┳━ scripts            //all application script should be here
 ┃   ┣━ core               //required. !Do not change without strong need!

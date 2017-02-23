@@ -10,6 +10,7 @@ import { BrowserSyncInst }  from './browsersync';
 
 const materialPath = 'node_modules/angular-material';
 const faPath = 'node_modules/font-awesome/scss';
+const colorMe = 'node_modules/color-me-sass'
 
 function HandleError(err) {
     gutil.log(gutil.colors.red('Sass compile error:'), err.message, '\n\t');
@@ -22,7 +23,8 @@ function SassCompile() {
         .pipe(gif(!args.build, sourcemaps.init({loadMaps: true})))
         .pipe(sass({includePaths: [
             materialPath,
-            faPath
+            faPath,
+            colorMe
         ]}))
         .on('error', HandleError)
         .pipe(rename(`main${name}.css`))
