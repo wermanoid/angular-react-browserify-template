@@ -1,14 +1,12 @@
+import states from './states.config';
+
 export default ($stateProvider, $urlRouterProvider, $locationProvider) => {
     'ngInject';
+    const {appStates} = states;
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('');
 
-    const mainState = {
-        name: 'home',
-        url: '/home',
-        component: 'home'
-    };
+    appStates.forEach($stateProvider.state);
 
-    $stateProvider.state(mainState);
     $urlRouterProvider.otherwise('/home');
 };
