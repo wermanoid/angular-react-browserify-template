@@ -1,3 +1,40 @@
-<md-content class="md-padding" flex layout="column">
+<md-content class="md-padding" flex layout="column" >
+    <md-nav-bar
+    layout-align="center"
+      md-selected-nav-item="vm.page"
+      nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-sref="docs.item({item: 'application'})" name="application">
+        @App
+      </md-nav-item>
+      <md-nav-item md-nav-sref="docs.item({item: 'controller'})" name="controller">
+        @Controller
+      </md-nav-item>
+      <md-nav-item md-nav-sref="docs.item({item: 'component'})" name="component">
+        @Component
+      </md-nav-item>
+      <md-nav-item md-nav-sref="docs.item({item: 'factory'})" name="factory">
+        @Factory
+      </md-nav-item>
+      <md-nav-item md-nav-sref="docs.item({item: 'service'})" name="service">
+        @Service
+      </md-nav-item>
+      <md-nav-item md-nav-sref="docs.item({item: 'directive'})" name="directive">
+        @Directive
+      </md-nav-item>
+      <md-nav-item md-nav-sref="docs.item({item: 'reactive'})" name="reactive">
+        @ReactiveDirective
+      </md-nav-item>
+
+      <!-- these require actual routing with ui-router or ng-route, so they
+      won't work in the demo
+      <md-nav-item md-nav-href="#page4" name="page5">Page Four</md-nav-item>
+      <md-nav-item md-nav-sref="app.page5" name="page4">Page Five</md-nav-item>
+      You can also add options for the <code>ui-sref-opts</code> attribute.
+      <md-nav-item md-nav-sref="page6" sref-opts="{reload:true, notify:true}">
+        Page Six
+      </md-nav-item>
+      -->
+    </md-nav-bar>
+    {{vm.page}}
     <ui-view></ui-view>
 </dm-content>

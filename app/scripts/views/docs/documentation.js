@@ -5,4 +5,9 @@ import Controller from 'core/controller';
 export class DocsComponent { }
 
 @Controller('documentation')
-export class DocsController { }
+export class DocsController {
+    constructor($stateParams) {
+        'ngInject';
+        this.page = $stateParams.item;
+    }
+}

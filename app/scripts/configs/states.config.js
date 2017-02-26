@@ -11,5 +11,15 @@ export default {
         url: '/docs',
         component: 'documentation',
         icon: 'fa-file-text-o'
+    }, {
+        name: 'docs.item',
+        url: '/{item}',
+        component: 'pager',
+        resolve: {
+            page: ($stateParams) => {
+                'ngInject';
+                return $stateParams.item;
+            }
+        }
     }]
 };
