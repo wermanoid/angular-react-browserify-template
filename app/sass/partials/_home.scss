@@ -1,0 +1,22 @@
+@import "color-me-sass";
+
+home {
+    &>md-content{
+        &.layout-padding{
+            padding: 0;
+        }
+    }
+    .general {
+        text-align: center;
+        background-color: $blueZurb;
+        color: $whiteFloral;
+    }
+
+    .features {
+        text-align: center;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}

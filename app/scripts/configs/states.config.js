@@ -6,10 +6,10 @@ export default {
         component: 'home',
         icon: 'fa-home'
     }, {
-        name: 'test',
-        title: 'Search',
-        url: '/home',
-        component: 'home',
-        icon: 'fa-search'
+        name: 'docs',
+        title: 'Documentation',
+        url: '/docs',
+        component: 'documentation',
+        icon: 'fa-file-text-o'
     }]
 };

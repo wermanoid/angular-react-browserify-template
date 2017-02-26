@@ -4,7 +4,7 @@
             <md-icon class="fa fa-bars fa-2x"></md-icon>
         </md-button>
         <span flex></span>
-        <h1 class="md-title text-center">AngularJs based UI template</h1>
+        <h1 class="md-title">AngularJs based UI template</h1>
         <span flex></span>
     </md-toolbar>
 </nav>
@@ -17,7 +17,7 @@
             class="at-nav-button"
             ui-sref="{{state.name}}"
             ui-sref-active="md-active md-accent"
-            ng-repeat="state in vm.states" flex>
+            ng-repeat="state in vm.states" flex ng-click="vm.toggleNav()">
             <md-icon class="material-icons fa" ng-class="state.icon"></md-icon>
             <p flex>{{state.title}}</p>
         </md-button>

@@ -6,11 +6,10 @@ export class NavigationComponent { }
 
 @Controller('navigation')
 export class NavigationController {
-    constructor($mdSidenav, appStates, $log) {
+    constructor($mdSidenav, appStates) {
         'ngInject';
         this.$mdSidenav = $mdSidenav;
         this.states = appStates;
-        $log.info(this);
     }
 
     toggleNav() {
