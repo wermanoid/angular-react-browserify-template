@@ -4,7 +4,7 @@ import gif              from 'gulp-if';
 import changed          from 'gulp-changed';
 import imagemin         from 'gulp-imagemin';
 
-function process_images(){
+function ImgCompile() {
     const target = args.build ? app.build : app.dev;
     const pathToDest = `${target}/images`;
     return this.src(`${app.img}/**/*.*`)
@@ -13,4 +13,4 @@ function process_images(){
         .pipe(this.dest(pathToDest));
 }
 
-export { process_images as ImgCompile };
+export { ImgCompile };

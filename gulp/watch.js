@@ -15,6 +15,8 @@ function RunWatchers() {
 
     watch(`${app.js}/**/*.html`, () => this.start('compile:html:views'));
 
+    watch(`${app.img}/**/*.*`, () => this.start('compile:img'));
+
     watch([`${app.js}/**/*.js`, `${app.js}/**/*.jsx`], (stream) => {
         if (stream.event === 'add' || stream.event === 'unlink') {
             for (const key in BundlerCache) {
