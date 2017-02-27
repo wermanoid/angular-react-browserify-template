@@ -1,26 +1,26 @@
-<md-content layout="column" layout-align="center" flex class="text-center">
-    <h2>@App</h2>
-    <p>
-        This decorator defines application root point. <i>required</i><br/> Code example:</p>
-    <div layout="row" layout-align="center">
-        <pre class="text-left" flex="60">
-        import App from 'core/app';
-        import 'angular-ui-router';
-        import 'angular-animate';
-        import 'angular-aria';
-        import 'angular-material';
+<div layout="row" layout-align="center" >
+    <md-content layout="column" layout-align="center" flex="60">
+        <h2>@App</h2>
+        <p>
+            This decorator defines application root point. It is <i>required</i><br/> Code example:</p>
 
-        @App({
-            name: 'main',
-            modules: ['ui.router', 'main.templates', 'ngMaterial']
-        })
-        export class MainApp {
-            run($log) {
-                'ngInject';
-                $log.info('application run');
-            }
-        }
+        <pre class="text-left" >
+import App from 'core/app';
+import 'angular-ui-router';
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-material';
 
+@App({
+    name: 'main',
+    modules: ['ui.router', 'main.templates', 'ngMaterial']
+})
+export class MainApp {
+    run($log) {
+        'ngInject';
+        $log.info('application run');
+    }
+}
     </pre>
-    </div>
-</md-content>
+    </md-content>
+</div>
