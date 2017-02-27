@@ -1,5 +1,11 @@
 @import "color-me-sass";
 
+.before-image{
+    content: '';
+    display: block;
+    background-repeat: no-repeat;
+}
+
 home {
     &>md-content{
         &.layout-padding{
@@ -39,27 +45,34 @@ home {
 
             &.angular{
                 &:before{
-                    content: '';
-                    display: block;
+                    @extend .before-image;
                     background-image: url('images/angular-logo.png');
                     margin: 0 auto 5px;
                     width: 160px;
                     height: 80px;
                     background-size: 160px 80px;
-                    background-repeat: no-repeat;
                 }
             }
 
             &.react{
                 &:before{
-                    content: '';
-                    display: block;
+                    @extend .before-image;
                     background-image: url('images/react-logo.png');
                     margin: 5px 40px 10px;
                     width: 70px;
                     height: 70px;
                     background-size: 70px 70px;
-                    background-repeat: no-repeat;
+                }
+            }
+
+            &.sass{
+                &:before{
+                    @extend .before-image;
+                    background-image: url('images/sass-logo.svg');
+                    margin: 5px 40px 0px;
+                    width: 80px;
+                    height: 80px;
+                    background-size: 80px 80px;
                 }
             }
         }
