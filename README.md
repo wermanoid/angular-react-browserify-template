@@ -57,41 +57,55 @@ Current required structure:
 ```
 //TODO: add possibility of structure configuration. If appears any need. If possible.
 ##AngularJs part
-###@App(name)
+###@App(configurationObject)
 Should be imported from: `'core/app'`.
-#####name
-`string`
-Name of root module. *Required*.
 
-Required to define root module.
-Use decorator `@App()` to define you application main modules
+#####configurationObject
+Type: `object`
+Object that defines root module. *Required*.
+
+####configurationObject.name
+Type: `string`
+Define root module name. *Required*.
+
+####configurationObject.modules
+Type: `Array of strings`
+
+Represents all external angular modules, like: `ngRoute`, `ui.bootstrap` or any other; Each external module also should be imported to `app.main.js` as it allows Browserify to collect it from `node_modules`. Otherwise - provide required `module_name.js` file in `vendors` directory. *Required if any external module presents*.
+
+Module `'main.templates'` contains all compiled to $templateCache .html files from `app/scripts` directory. *Better to have*
+
+Usage decorator `@App(obj)` to define you application main modules:
 ```js
-/* eslint no-unused-vars: 0 */    //or you get error regarding unused route or any other externam module
 import App from 'core/app';
-import route from 'angular-route';
+import 'angular-ui-router';
 
-@App('main')
-export class MainApp {
-    constructor() {
-        this.vendors = ['ngRoute', 'main.templates'];
-    }
-}
+@App({
+    name: 'main',
+    modules: ['main.templates', 'ui.router']
+})
+export class MainApp { }
 ```
 
 ####exported class
 Minimal requirement:
 ```js
-class SomeName {
-    constructor() {
-        this.vendors = ['main.templates'];
+@App(...)
+export class SomeName { }
+```
+
+
+Also, if any run on start is needed:
+Minimal requirement:
+```js
+@App(...)
+export class SomeName {
+    run(/* required injections */){
+        'ngInject';
+        // do some stuff...
     }
 }
 ```
-Module `'main.templates'` contains all compiled to $templateCache .html files from `app/scripts` directory. *Better to have*
-####this.vendors = [Array of strings]
-Required for import in angular app external modules.
-####Array of strings
-Represents all external angular modules, like: `ngRoute`, `ui.bootstrap` or any other; Each external module also should be imported to `app.main.js` as it allows Browserify to collect it from `node_modules`. Otherwise - provide required `module_name.js` file in `vendors` directory.
 
 ###@Controller(name, module='main.controllers')
 Should be imported from: `'core/controllers'`;

@@ -4,9 +4,13 @@ import 'angular-animate';
 import 'angular-aria';
 import 'angular-material';
 
-@App('main')
+@App({
+    name: 'main',
+    modules: ['ui.router', 'main.templates', 'ngMaterial']
+})
 export class MainApp {
-    constructor() {
-        this.vendors = ['ui.router', 'main.templates', 'ngMaterial'];
+    run($log) {
+        'ngInject';
+        $log.info('application run');
     }
 }

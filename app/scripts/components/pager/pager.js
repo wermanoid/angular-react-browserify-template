@@ -8,7 +8,7 @@ export class PagerComponent {
             page: '<'
         };
         this.templateUrl = null;
-        this.template = '<div>some page and: {{vm.page}}</div>';
+        this.template = '<div ng-include="\'doc.\' + vm.page + \'.html\'"></div>';
     }
 }
 
