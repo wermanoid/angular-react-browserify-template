@@ -6,8 +6,7 @@ export class HomeComponent { }
 
 @Controller('home')
 export class HomeController {
-    constructor($log) {
-        $log.info('test here');
+    constructor() {
         this.field = 1234;
     }
 

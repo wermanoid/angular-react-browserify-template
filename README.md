@@ -94,9 +94,7 @@ Minimal requirement:
 export class SomeName { }
 ```
 
-
 Also, if any run on start is needed:
-Minimal requirement:
 ```js
 @App(...)
 export class SomeName {
