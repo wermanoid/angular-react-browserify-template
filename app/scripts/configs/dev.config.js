@@ -1,3 +1,4 @@
 export default {
-    test: 'some test data'
+    testApi: 'some test data',
+    and: 123
 };

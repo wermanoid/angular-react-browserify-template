@@ -1,12 +1,15 @@
-import Resolver, { Dependency, toFactory } from './resolver';
+import { Resolver } from './register';
+import { getArgs } from './helper';
 
-const Factory = (name, module = 'main.factories') => {
+export default ({name, module = 'main.factories'}) => {
     if (!name) {throw Error('Can\'t register unnamed factory');}
 
-    return (ctor) => {
-        ctor = toFactory(ctor);
-        Resolver.resolve(Dependency.factory, name.trim(), module, () => ctor);
+    return (Factory) => {
+        function factory(...args) {
+            return new Factory(...args);
+        }
+
+        factory.$inject = getArgs(Factory);
+        Resolver.module(module).factory(name, factory);
     };
 };
-
-export default Factory;

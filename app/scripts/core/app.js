@@ -1,16 +1,16 @@
 /* eslint angular/log: 0 */
 import _ 			from 'lodash';
-import Resolver 	from './resolver';
 import { Modules } 	from './moduler';
+import { Resolver } from './register';
 
-const App = ({name, modules}) => {
-    return (Ctor) => {
+export default ({name, modules}) => {
+    return (AppConstructor) => {
+        console.log(modules, name, AppConstructor, Modules);
 
-        const app = new Ctor();
-
-        Resolver.bootstrap(name, modules, (main) => {
-            const { configs } = Modules;
-            _(configs)
+        const app = new AppConstructor();
+        const main = Resolver.bootstrap(name, modules);
+        const { configs } = Modules;
+        _(configs)
                 .keys()
                 .map(key => configs[key].default)
                 .forEach(conf => {
@@ -23,11 +23,8 @@ const App = ({name, modules}) => {
                             }, main);
                     }
                 });
-            if (app.run) {
-                main.run.call(main, app.run);
-            }
-        });
+        if (app.run) {
+            main.run.call(main, app.run);
+        }
     };
 };
-
-export default App;

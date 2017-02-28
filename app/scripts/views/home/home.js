@@ -1,13 +1,10 @@
-import Controller from 'core/controller';
 import Component from 'core/component';
 
-@Component('home')
-export class HomeComponent { }
-
-@Controller('home')
+@Component({name: 'home'})
 export class HomeController {
-    constructor() {
+    constructor(tFactory, $log) {
         this.field = 1234;
+        $log.info('Injected factory:', tFactory);
     }
 
     test() {

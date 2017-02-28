@@ -1,10 +1,6 @@
 import Component from 'core/component';
-import Controller from 'core/controller';
 
-@Component('navigation')
-export class NavigationComponent { }
-
-@Controller('navigation')
+@Component({name: 'navigation'})
 export class NavigationController {
     constructor($mdSidenav, appStates) {
         'ngInject';

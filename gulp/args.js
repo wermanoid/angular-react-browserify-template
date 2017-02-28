@@ -3,7 +3,7 @@ const yargs = require('yargs');
 const args = yargs
     .default({
         build: false,
-        env: 'local',
+        env: 'dev',
         quiet: false,
         fix: true,
         debug: false,

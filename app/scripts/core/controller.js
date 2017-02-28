@@ -1,14 +1,12 @@
-import Resolver, { Dependency } from './resolver';
+import { Resolver } from './register';
 
-const Controller = (name, module = 'main.controllers') => {
+export default ({name, module = 'main.controllers'}) => {
     if (!name) {
         throw Error('Can\'t register unnamed controller');
     }
 
-    return (ctor) => {
-        name = name.trim() + 'Controller';
-        Resolver.resolve(Dependency.controller, name, module, () => ctor);
+    return (Controller) => {
+        Resolver.module(module)
+            .controller(`${name.trim()}Controller`, Controller);
     };
 };
-
-export default Controller;

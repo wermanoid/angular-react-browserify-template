@@ -48,8 +48,8 @@ const createAndExecuteBundle = (gulp) => {
         .transform(babelify)
         .transform(brfs)
         .transform(ngAnnotate)
-        .transform(bulkify)
-        .transform(envify({ENV_CONFIG: args.env}));
+        .transform(envify({ENV_CONFIG: args.env}))
+        .transform(bulkify);
 
     rebundle = () => {
         Log.start();
