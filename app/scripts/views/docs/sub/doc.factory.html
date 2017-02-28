@@ -1,0 +1,20 @@
+<div layout="row" layout-align="center" >
+    <md-content layout="column" layout-align="center" flex="60">
+        <h2>@Factory</h2>
+        <p>
+            This decorator defines factory.
+
+        <pre class="text-left">
+    import Factory from 'core/factory';
+
+    @Factory({name: 'tFactory'})
+    export class TFactory {
+        constructor($timeout, $log, testApi) {
+            'ngInject';
+            $timeout(() => $log.info('Timeout from factory', testApi), 0);
+            return {bla: 1234};
+        }
+    }
+    </pre>
+    </md-content>
+</div>

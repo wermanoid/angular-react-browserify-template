@@ -1,11 +1,9 @@
-import Resolver, { Dependency } from './resolver';
+import { Resolver } from './register';
 
-const Service = (name, module = 'main.services') => {
+export default ({name, module = 'main.services'}) => {
     if (!name) {throw Error('Can\'t register unnamed service');}
 
-    return (ctor) => {
-        Resolver.resolve(Dependency.service, name.trim(), module, () => ctor);
+    return (Service) => {
+        Resolver.module(module).service(name, Service);
     };
 };
-
-export default Service;

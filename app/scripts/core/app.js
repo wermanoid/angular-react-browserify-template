@@ -1,12 +1,9 @@
-/* eslint angular/log: 0 */
 import _ 			from 'lodash';
 import { Modules } 	from './moduler';
 import { Resolver } from './register';
 
 export default ({name, modules}) => {
     return (AppConstructor) => {
-        console.log(modules, name, AppConstructor, Modules);
-
         const app = new AppConstructor();
         const main = Resolver.bootstrap(name, modules);
         const { configs } = Modules;

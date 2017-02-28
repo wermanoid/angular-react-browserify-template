@@ -1,0 +1,23 @@
+<div layout="row" layout-align="center" >
+    <md-content layout="column" layout-align="center" flex="60">
+        <h2>@Service</h2>
+        <p>
+            This decorator defines service.
+
+        <pre class="text-left">
+    import Service from 'core/service';
+
+    @Service({name: 'tService'})
+    export class TService {
+        constructor($timeout, $log, testApi) {
+            'ngInject';
+            $timeout(() => $log.info('Timeout from service', testApi), 0);
+        }
+
+        show() {
+            return 12345;
+        }
+    }
+    </pre>
+    </md-content>
+</div>

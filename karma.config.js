@@ -1,6 +1,7 @@
 import istanbul from 'browserify-istanbul';
 import isparta  from 'isparta';
 import {argv as args} from 'yargs';
+import envify from 'envify/custom';
 
 const Config = (config) => {
     const options = {
@@ -57,6 +58,7 @@ const Config = (config) => {
             transform: [
                 'babelify',
                 'browserify-ngannotate',
+                envify({ENV_CONFIG: 'dev'}),
                 'bulkify',
                 istanbul({
                     instrumenter: isparta,

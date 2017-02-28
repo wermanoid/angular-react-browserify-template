@@ -5,22 +5,22 @@
             This decorator defines application root point. It is <i>required</i><br/> Code example:</p>
 
         <pre class="text-left" >
-import App from 'core/app';
-import 'angular-ui-router';
-import 'angular-animate';
-import 'angular-aria';
-import 'angular-material';
+    import App from 'core/app';
+    import 'angular-ui-router';
+    import 'angular-animate';
+    import 'angular-aria';
+    import 'angular-material';
 
-@App({
-    name: 'main',
-    modules: ['ui.router', 'main.templates', 'ngMaterial']
-})
-export class MainApp {
-    run($log) {
-        'ngInject';
-        $log.info('application run');
+    @App({
+        name: 'main',
+        modules: ['ui.router', 'main.templates', 'ngMaterial']
+    })
+    export class MainApp {
+        run($log) {
+            'ngInject';
+            $log.info('application run');
+        }
     }
-}
     </pre>
     </md-content>
 </div>

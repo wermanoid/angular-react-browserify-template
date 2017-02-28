@@ -1,0 +1,35 @@
+<div layout="row" layout-align="center">
+    <md-content layout="column" layout-align="center" flex="60">
+        <h2>@Reactive</h2>
+        <p>
+            Use to define react-based component within angular
+        </p>
+
+        <pre class="text-left">
+    import React from 'react';
+    import Reactive from 'core/reactive';
+
+    @Reactive({name: 'reactExample'})
+    export class Example extends React.Component {
+        static propTypes() {
+            return {
+                a: React.PropTypes.string
+            };
+        }
+
+        constructor(props, context) {
+            super(props, context);
+        }
+
+        render() {
+            return (&lt;h1&gt;React component item here! And a = {this.props.a}&lt;/h1&gt;);
+        }
+    }
+        </pre>
+        <p>To use, simply call it as angular component in html:</p>
+        <pre>
+    &lt;react-example props="vm.forTest"&gt;&lt;/react-example&gt;
+        </pre>
+
+    </md-content>
+</div>

@@ -1,15 +1,19 @@
 import { Resolver } from './register';
-import { getArgs } from './helper';
+import {getArgs} from './helper';
+import _ from 'lodash';
 
 export default ({name, module = 'main.factories'}) => {
     if (!name) {throw Error('Can\'t register unnamed factory');}
 
     return (Factory) => {
-        function factory(...args) {
-            return new Factory(...args);
+        if (_.isArray(Factory)) {
+            const Constructor = Factory[Factory.length - 1];
+            Factory[Factory.length - 1] = (...args) => new Constructor(...args);
+        } else {
+            const Constructor = Factory;
+            Factory = (...args) => new Constructor(...args);
+            Factory.$inject = getArgs(Constructor);
         }
-
-        factory.$inject = getArgs(Factory);
-        Resolver.module(module).factory(name, factory);
+        Resolver.module(module).factory(name, Factory);
     };
 };

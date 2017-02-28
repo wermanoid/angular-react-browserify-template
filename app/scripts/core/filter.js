@@ -1,15 +1,16 @@
-import Resolver, { Dependency, getArgs } from './resolver';
+import { Resolver } from './register';
+import { getArgs } from './helper';
 
-const Filter = (name, module = 'main.filters') => {
+export default ({name, module = 'main.filters'}) => {
     if (!name) {throw Error('Can\'t register unnamed filter');}
-    return (Ctor) => {
-        const factory = (...arg) => {
-            const filterObj = new Ctor(...arg);
+
+    return (Factory) => {
+        function factory(...args) {
+            const filterObj = new Factory(...args);
             return filterObj.filter.bind(filterObj);
-        };
-        factory.$inject = Ctor.$inject || getArgs(Ctor);
-        Resolver.resolve(Dependency.filter, name.trim(), module, () => factory);
+        }
+
+        factory.$inject = getArgs(Factory);
+        Resolver.module(module).fiter(name, factory);
     };
 };
-
-export default Filter;
