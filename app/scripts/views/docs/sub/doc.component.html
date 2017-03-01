@@ -1,0 +1,23 @@
+<div layout="row" layout-align="center">
+    <md-content layout="column" layout-align="center" flex="60">
+        <h2>@Component</h2>
+        <p>
+            This decorator defines component.
+
+        <pre class="text-left">
+    import Component from 'core/component';
+
+    @Component({name: 'navigation'})
+    export class NavigationController {
+        constructor($mdSidenav) {
+            'ngInject';
+            this.$mdSidenav = $mdSidenav;
+        }
+
+        toggleNav() {
+            this.$mdSidenav('left').toggle();
+        }
+    }
+        </pre>
+    </md-content>
+</div>

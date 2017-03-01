@@ -6,11 +6,11 @@
         </p>
 
         <pre class="text-left">
-    import React from 'react';
+    import React, {Component} from 'react';
     import Reactive from 'core/reactive';
 
     @Reactive({name: 'reactExample'})
-    export class Example extends React.Component {
+    export class Example extends Component {
         static propTypes() {
             return {
                 a: React.PropTypes.string
