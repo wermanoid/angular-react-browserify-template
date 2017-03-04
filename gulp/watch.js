@@ -7,6 +7,7 @@ import {
 }                        from './browserify';
 import _                 from 'lodash';
 import gutil             from 'gulp-util';
+import nodePath          from 'path';
 
 function RunWatchers() {
     this.watch(`${app.root}/index.html`, ['compile:html:index']);
@@ -19,8 +20,9 @@ function RunWatchers() {
 
     watch([`${app.js}/**/*.js`, `${app.js}/**/*.jsx`], (stream) => {
         if (stream.event === 'add' || stream.event === 'unlink') {
+            const modulerPath = `${app.js}/core/moduler.js`.replace(/\//gi, nodePath.sep);
             for (const key in BundlerCache) {
-                if (stream.path === key || _.endsWith(key, `${app.js}/core/moduler.js`)) {
+                if (stream.path === key || _.endsWith(key, modulerPath)) {
                     gutil.log(`${gutil.colors.green('Remove key from cache: ' + key)}...`);
                     delete BundlerCache[key];
                 }
