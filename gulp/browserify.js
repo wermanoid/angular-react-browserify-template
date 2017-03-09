@@ -48,7 +48,7 @@ const createAndExecuteBundle = (gulp) => {
         .transform(babelify)
         .transform(brfs)
         .transform(ngAnnotate)
-        .transform(envify({ENV_CONFIG: args.env}))
+        .transform(envify({ENV_CONFIG: isBuild ? 'prod' : args.env}))
         .transform(bulkify);
 
     rebundle = () => {

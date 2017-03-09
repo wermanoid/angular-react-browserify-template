@@ -3,6 +3,7 @@ import Component from 'core/component';
 @Component({name: 'home'})
 export class HomeController {
     constructor($timeout) {
+        'ngInject';
         this.field = 1234;
         this.forTest = {
             a: 123,

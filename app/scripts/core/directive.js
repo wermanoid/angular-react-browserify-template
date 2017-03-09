@@ -17,8 +17,6 @@ export default (config) => {
     name = name.trim();
 
     return (DirectiveOrController) => {
-        console.log('Directive:', DirectiveOrController);
-
         function dirFactory(...args) {
             const directive = controller ? Object.create(new DirectiveOrController(...args)) : {};
             Object.assign(directive, {

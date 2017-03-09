@@ -53,14 +53,19 @@ gulp.task('build', (callback) => {
 
 gulp.task('default', (callback) => {
     let seq = new Sequence();
-    seq = seq.sync('clean', 'build', 'server');
+    seq = seq.sync('clean', 'build');
     if (Args['update-driver']) {
         seq.async('webdriverUpdate', 'webdriver');
     }
     if (!Args.build) {
-        seq.async('watch', 'karma');
-    } else {
-        seq.sync('e2e');
+        seq.async('server', 'watch');
+        if (Args.tests) {
+            seq.async('karma');
+        }
+    } else if (Args.tests) {
+        seq.sync('server', 'e2e');
+    } else if (Args.server) {
+        seq.sync('server');
     }
     seq.call(gulp, callback);
 });

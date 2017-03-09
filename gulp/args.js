@@ -7,7 +7,9 @@ const args = yargs
         quiet: false,
         fix: true,
         debug: false,
-        'update-driver': false
+        'update-driver': false,
+        tests: false,
+        server: false
     })
     .alias('q', 'quiet')
     .alias('ud', 'update-driver')
